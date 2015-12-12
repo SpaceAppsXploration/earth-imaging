@@ -1,0 +1,13 @@
+# add requirements here
+
+# oauth2: not implemented yet
+
+
+# pycurl: not supported by GAE, use urllib or urllib2
+# use pycurl to run local tests
+# pycurl==7.19.5.1
+
+# 1. run from the project root: pip install -t lib -r requirements.txt
+# 2. copy in the lib/ directory longtask => https://github.com/mdornseif/gaetk_longtask
+# 3. copy json2html python package
+# 4. install rdf-lib-appengine as explained https://github.com/mr-niels-christensen/rdflib-appengine
