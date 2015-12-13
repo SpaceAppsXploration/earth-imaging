@@ -5,7 +5,6 @@ running locally.
 """
 
 import unittest
-import json
 from utils.remote import get_curling, post_curling
 from config.config import SERVICE
 from config.secret import app_token
@@ -16,14 +15,14 @@ __author__ = 'Lorenzo'
 class HTTPrequest(unittest.TestCase):
     def __init__(self, env=None):
         """
-        Constructor is overidden to take the argument that defines the
-        online or offline mode.
+    Constructor is overidden to take the argument that defines the
+    online or offline mode.
 
-        Usage:
-            test = HTTPrequest(env='online')
-            test.runTest()
+    Usage:
+        test = HTTPrequest(env='online')
+        test.runTest()
 
-        """
+    """
         super(HTTPrequest, self).__init__()
         if env is not None and env == 'online':
             self.test_env = env
