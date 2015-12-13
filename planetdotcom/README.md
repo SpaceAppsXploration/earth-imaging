@@ -349,7 +349,7 @@ properties.links.thumbnail 	string 	Link to image thumbnail
 Fetch GeoTIFF for scene
 
     Example gdalinfo response
-
+```
 Driver: GTiff/GeoTIFF
 Files: 20140922_174539_planet_ortho_51.55N_118.14E.tif
 Size is 4832, 4229
@@ -392,6 +392,7 @@ Band 2 Block=4832x1 Type=Byte, ColorInterp=Green
 Band 3 Block=4832x1 Type=Byte, ColorInterp=Blue
   Mask Flags: PER_DATASET ALPHA
 Band 4 Block=4832x1 Type=Byte, ColorInterp=Alpha
+```
 
 Returns the GeoTIFF of the requested scene.
 HTTP Request
