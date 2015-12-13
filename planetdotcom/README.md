@@ -430,6 +430,54 @@ Response Format
 
 Attached image of format specified.
 
+# Get Scenes by Area of Interest (Scenes V0 API Tutorial)
+
+First, determine what geometry (polygon, point, line, multipolygon, etc.) you would like the returned images to intersect. This geometry can be expressed as Well Known Text or GeoJSON with (longitude, latitude) pairs.
+
+Then, request the scenes in that area using the intersects parameter.
+
+Then, use links.next to get additional scenes in the time range. When no more scenes are returned, you’ve retrieved all the new scenes in the time range.
+
+```
+import requests
+
+url = "https://api.planet.com/v0/scenes/ortho/"
+key = "YOUR-KEY-HERE"
+
+# (longitude, latitude)
+sf_nw = (-122.545373, 37.815798)
+sf_se = (-122.340066, 37.709403)
+sf_ne = (sf_se[0], sf_nw[1])
+sf_sw = (sf_nw[0], sf_se[1])
+
+# Using WKT
+
+from shapely.geometry import Polygon
+from shapely.wkt import dumps as wkt_dumps
+
+poly = Polygon([sf_nw, sf_ne, sf_se, sf_sw, sf_nw])
+intersects = wkt_dumps(poly)
+
+# Or, using GeoJSON
+
+import geojson
+
+poly = geojson.Polygon([[sf_nw, sf_ne, sf_se, sf_sw, sf_nw]])
+intersects = geojson.dumps(poly)
+
+# Back to shared code between WKT and GeoJSON
+
+params = {
+    "intersects": intersects,
+}
+
+data = requests.get(url, params=params, auth=(key, ''))
+
+scenes_data = data.json()["features"]
+
+# do something with scenes_data
+```
+
 
 # Python Stack Finder Example
 
